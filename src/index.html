@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+
+</head>
+<body>
+
+<div class="Outer">
+    <h1>Don't have an account? <br> Want to join us?</h1>
+
+    <form action="" name="myForm" onsubmit="return(validation());">
+        
+        <div class="firstname">
+            <label class="mainElement" for="nameid">First Name</label>
+            <input id="nameid" name="name" type="text" placeholder="Enter your name">
+            <span class="error" id="errorname"></span>
+        </div>
+        <div class="midname">
+            <label class="mainElement" for="nameid">Mid Name</label>
+            <input id="nameid" name="name" type="text" placeholder="Enter your name">
+            <span class="error" id="errorname"></span>
+        </div>
+        <div class="lastname">
+            <label class="mainElement" for="nameid">Last Name</label>
+            <input id="nameid" name="name" type="text" placeholder="Enter your name">
+            <span class="error" id="errorname"></span>
+        </div>
+
+        
+        <div class="email">
+            <label class="mainElement" for="email">Email ID</label>
+            <input id="email" name="Email" type="email" placeholder="Email ID">
+            <span class="error" id="erroremail"></span>
+        </div>
+        
+        <div class="city">
+            <label class="mainElement" for="City">Select city</label>
+            <select name="cityname" id="City">
+                <option value="select" selected>Select</option>
+                <option value="Patna">Patna</option>
+                <option value="lck">Lucknow</option>
+                <option value="rnch">Ranchi</option>
+                <option value="dlh">Delhi</option>
+            </select>
+            <span class="error" id="errorcity"></span>
+        </div>
+
+        <div class="gender">
+            <label for="gender">Gender</label>
+             <input id="male" type="radio" name="gender"><label for="male">Male</label>
+             <input id="female" type="radio" name="gender"><label for="female">Female</label>
+             <input id="other" type="radio" name="gender"><label for="other">Other</label>
+             <br>
+             <span class="error" id="errorgender"></span>
+        </div>
+
+        <div class="password">
+            <label class="mainElement" for="password">Password</label>
+            <input id="password" name="pass" type="password" placeholder="Password">
+            <span class="error" id="errorpassword"></span><br>
+            <input type="checkbox" onclick="showPassword()"> Show Password
+        </div>
+
+        <div class="agree">
+            <input id="agreement" name="agree" type="checkbox"> 
+            <label for="agreement">I agree to the terms and conditions</label><br>
+            <span class="error" id="erroragreement"></span>
+        </div>
+    
+
+        <div class="buttons">
+            <input id="sub" type="submit" value="Submit">
+            <input id="res" type="reset" value="Reset">
+        </div>
+    
+    </form>
+
+</div>
+<script>
+    function validation()
+    {
+        var isValid=true
+        if(document.myForm.name.value=="")
+        {
+            document.getElementById("errorname").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("errorname").innerHTML=""
+        }
+
+        if(document.myForm.Email.value=="")
+        {
+            document.getElementById("erroremail").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("erroremail").innerHTML=""
+        }
+
+        if(document.myForm.cityname.value=="select")
+        {
+            document.getElementById("errorcity").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("errorcity").innerHTML=""
+        }
+
+        if(document.myForm.gender.value=="")
+        {
+            document.getElementById("errorgender").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("errorgender").innerHTML=""
+        }
+
+        if(document.myForm.pass.value=="")
+        {
+            document.getElementById("errorpassword").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("errorpassword").innerHTML=""
+        }
+
+        if(document.myForm.agree.checked==false)
+        {
+            document.getElementById("erroragreement").innerHTML="Mandatory field left blank"
+            isValid= false;
+        }
+        else{
+            document.getElementById("erroragreement").innerHTML=""
+        }
+
+        return isValid;
+
+    }
+    function showPassword() 
+    {
+        var x = document.getElementById("password");
+        if (x.type === "password") 
+        {
+          x.type = "text";
+        } else 
+        {
+          x.type = "password";
+        }
+
+    }
+</script>
+</body>
+</html>
