@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import StudentForm from './StudentForm';
+import Header from './MyComponents/Header';
 
 function App() {
   return (
-    <StudentForm/>
+    <Header/>
   );
 }
 
