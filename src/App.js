@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import StudentForm from './StudentForm';
-import Header from './MyComponents/quiz';
+import React from 'react';
+import UserForm from './UserForm';
 
-function App() {
+const App = () => {
   return (
-    <Header/>
+    <div>
+      <UserForm />
+    </div>
   );
-}
+};
 
 export default App;
