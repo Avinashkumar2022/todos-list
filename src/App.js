@@ -1,10 +1,10 @@
 import React from 'react';
-import UserForm from './UserForm';
+import UserDetailsForm from './UserForm';
 
 const App = () => {
   return (
     <div>
-      <UserForm />
+      <UserDetailsForm />
     </div>
   );
 };
