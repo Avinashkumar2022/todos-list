@@ -1,119 +1,70 @@
 import React, { useState } from 'react';
 
-function UserDetailsForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    RegNO: ''
-  });
-  const [showDetails, setShowDetails] = useState(false);
+const CourseForm = () => {
+  // Define state variables to store form data
+  const [courseName, setCourseName] = useState('');
+  const [courseCode, setCourseCode] = useState('');
+  const [instructor, setInstructor] = useState('');
+  const [credits, setCredits] = useState('');
 
-  const handleChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform any action with the form data, such as sending it to a backend server
+    console.log({
+      courseName,
+      courseCode,
+      instructor,
+      credits
     });
+    // Clear form fields after submission
+    setCourseName('');
+    setCourseCode('');
+    setInstructor('');
+    setCredits('');
   };
-
-  const toggleDetails = () => {
-    setShowDetails(!showDetails);
-  };
-
-  const styles = {
-    container: {
-      backgroundColor: 'white',
-      fontFamily: 'Arial, sans-serif',
-      maxWidth: '400px',
-      margin: '0 auto',
-      padding: '20px',
-      border: '1px solid #ccc',
-      borderRadius: '5px',
-      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-    },
-    h2: {
-      marginTop: '0'
-    },
-    label: {
-      display: 'block',
-      marginBottom: '5px'
-    },
-    input: {
-      width: '100%',
-      padding: '8px',
-      marginBottom: '10px',
-      border: '1px solid #ccc',
-      borderRadius: '3px'
-    },
-    button: {
-      backgroundColor: 'red',
-      color: '#fff',
-      border: 'none',
-      padding: '10px 20px',
-      borderRadius: '3px',
-      cursor: 'pointer'
-    },
-    buttonHover: {
-      backgroundColor: 'yellow'
-    },
-    pre: {
-      backgroundColor: 'lime',
-      padding: '10px',
-      borderRadius: '3px',
-      whiteSpace: 'pre-wrap'
-    }
-  };
-
-  document.body.style.backgroundColor = 'blue';
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.h2}>User Details Form</h2>
-      <form>
-        <label htmlFor="name" style={styles.label}>Name: </label>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Course Name:</label>
         <input
           type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          style={styles.input}
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)}
+          required
         />
-        <br />
-        <label htmlFor="email" style={styles.label}>Email: </label>
+      </div>
+      <div>
+        <label>Course Code:</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          style={styles.input}
+          type="text"
+          value={courseCode}
+          onChange={(e) => setCourseCode(e.target.value)}
+          required
         />
-        <br />
-        <label htmlFor="RegNO" style={styles.label}>RegNo: </label>
+      </div>
+      <div>
+        <label>Instructor:</label>
+        <input
+          type="text"
+          value={instructor}
+          onChange={(e) => setInstructor(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Credits:</label>
         <input
           type="number"
-          id="RegNO"
-          name="RegNO"
-          value={formData.RegNO}
-          onChange={handleChange}
-          style={styles.input}
+          value={credits}
+          onChange={(e) => setCredits(e.target.value)}
+          required
         />
-        <br />
-        <button
-          type="button"
-          onClick={toggleDetails}
-          style={{ ...styles.button, ...(showDetails && styles.buttonHover) }}
-        >
-          {showDetails ? 'Hide Details' : 'Show Details'}
-        </button>
-      </form>
-      {showDetails && (
-        <pre style={styles.pre}>
-          {JSON.stringify(formData, null, 2)}
-        </pre>
-      )}
-    </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
   );
-}
+};
 
-export default UserDetailsForm;
+export default CourseForm;
